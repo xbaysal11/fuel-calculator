@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/calculateButton"
         android:layout_width="256dp"
         android:layout_height="77dp"
         android:text="Button"
@@ -26,11 +26,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/result"
         app:layout_constraintVertical_bias="0.175" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/distance"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -38,13 +38,13 @@
         android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="numberSigned"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
+        app:layout_constraintEnd_toStartOf="@+id/fuel"
         app:layout_constraintHorizontal_bias="0.302"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/result"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -54,10 +54,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/price" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/fuel"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -69,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/price"
         android:layout_width="201dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Spinner
-        android:id="@+id/measurement"
+        android:id="@+id/measurementSpinner"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -89,13 +89,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Spinner
-        android:id="@+id/currency"
+        android:id="@+id/currencySpinner"
         android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/measurement" />
+        app:layout_constraintTop_toBottomOf="@+id/measurementSpinner" />
 
     <TextView
         android:id="@+id/textView2"
@@ -106,7 +106,7 @@
         android:layout_marginTop="40dp"
         android:text="Distance travelled"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currency" />
+        app:layout_constraintTop_toBottomOf="@+id/currencySpinner" />
 
     <TextView
         android:id="@+id/textView4"
@@ -119,7 +119,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/currency" />
+        app:layout_constraintTop_toBottomOf="@+id/currencySpinner" />
 
     <TextView
         android:id="@+id/textView5"
@@ -130,6 +130,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.325"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/distance" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
