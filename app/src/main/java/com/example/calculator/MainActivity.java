@@ -4,19 +4,39 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner measurementSpinner;
     Spinner currencySpinner;
     private TextView result;
     private EditText distance, price, fuel;
     private Button calculateButton;
     private int Result = 0;
+    int measurementId;
+    int currencyId;
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(this, measurementSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, currencySpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+
+        measurementId = measurementSpinner.getSelectedItemPosition();
+        currencyId = currencySpinner.getSelectedItemPosition();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        Toast.makeText(this, "Nothing Selected, Baike", Toast.LENGTH_SHORT).show();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +54,13 @@ public class MainActivity extends AppCompatActivity{
         ArrayAdapter<CharSequence> measurementAdapter = ArrayAdapter.createFromResource(this, R.array.measurement, android.R.layout.simple_spinner_item);
         measurementAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         measurementSpinner.setAdapter(measurementAdapter);
+        measurementSpinner.setOnItemSelectedListener(this);
 
         //currency
         ArrayAdapter<CharSequence> currencyAdapter = ArrayAdapter.createFromResource(this, R.array.currency, android.R.layout.simple_spinner_item);
         currencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         currencySpinner.setAdapter(currencyAdapter);
-
-        final Integer selectedMeasurement = measurementSpinner.getSelectedItemPosition();
-        final Integer selectedCurrency = currencySpinner.getSelectedItemPosition();
+        currencySpinner.setOnItemSelectedListener(this);
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,11 +69,26 @@ public class MainActivity extends AppCompatActivity{
                 int priceInt = Integer.parseInt(price.getText().toString());
                 int fuelInt = Integer.parseInt(fuel.getText().toString());
 
-                Result = distanceInt + priceInt + fuelInt;
-
+                if (measurementId == 0 && currencyId == 0){
+                    Result = distanceInt + fuelInt + priceInt;
                     result.setText(String.valueOf(Result));
+                }
+                if (measurementId == 1 && currencyId == 0){
+                    Result = distanceInt + fuelInt + priceInt;
+                    result.setText(String.valueOf(Result));
+                }
+                if (measurementId == 1 && currencyId == 1){
+                    Result = distanceInt + fuelInt + priceInt;
+                    result.setText(String.valueOf(Result));
+                }
+                if (measurementId == 0 && currencyId == 1){
+                    Result = distanceInt + fuelInt + priceInt;
+                    result.setText(String.valueOf(Result));
+                }
+
             }
         });
     }
+
 
 }
