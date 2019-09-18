@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">calculator</string>
     <string-array name="measurement">
-        <item>Imperial (miles, gallons)</item>
         <item>Metric (km, liters)</item>
+        <item>Imperial (miles, gallons)</item>
     </string-array>
     <string-array name="currency">
-        <item>Som C</item>
+        <item>KGZ som</item>
         <item>Dollars $</item>
     </string-array>
 </resources>

@@ -18,7 +18,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private TextView result;
     private EditText distance, price, fuel;
     private Button calculateButton;
-    private int Result = 0;
+    private double fuelConsumption = 0;
+    private double fuelConsumption2 = 0;
+    private double fuelCost = 0;
+    private double fuelCost2 = 0;
     int measurementId;
     int currencyId;
 
@@ -65,25 +68,37 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int distanceInt = Integer.parseInt(distance.getText().toString());
-                int priceInt = Integer.parseInt(price.getText().toString());
-                int fuelInt = Integer.parseInt(fuel.getText().toString());
+                float distanceInt = Float.parseFloat(distance.getText().toString());
+                float priceInt = Float.parseFloat(price.getText().toString());
+                float fuelInt = Float.parseFloat(fuel.getText().toString());
 
                 if (measurementId == 0 && currencyId == 0){
-                    Result = distanceInt + fuelInt + priceInt;
-                    result.setText(String.valueOf(Result));
+                    fuelConsumption = fuelInt / distanceInt * 100 ;
+                    fuelConsumption2 = distanceInt / fuelInt  ;
+                    fuelCost = priceInt / fuelConsumption;
+                    fuelCost2 = 1 / fuelCost;
+                    result.setText("Fuel consumption: " + String.format("%.2f",fuelConsumption) + " Liters per 100km ("+String.format("%.2f",fuelConsumption2) +" km per liter)\nFuel cost: " + String.format("%.2f",fuelCost) +" KGS. per km ("+String.format("%.2f",fuelCost2)+" km per KGS)");
                 }
                 if (measurementId == 1 && currencyId == 0){
-                    Result = distanceInt + fuelInt + priceInt;
-                    result.setText(String.valueOf(Result));
+                    fuelConsumption = fuelInt / distanceInt * 100 ;
+                    fuelConsumption2 = distanceInt / fuelInt  ;
+                    fuelCost = priceInt / fuelConsumption;
+                    fuelCost2 = 1 / fuelCost;
+                    result.setText("Fuel consumption: " + String.format("%.2f",fuelConsumption) + " Miles per Gallon\nFuel cost: " + String.format("%.2f",fuelCost) +" KGS. per miles ("+String.format("%.2f",fuelCost2)+" miles per KGS)");
                 }
                 if (measurementId == 1 && currencyId == 1){
-                    Result = distanceInt + fuelInt + priceInt;
-                    result.setText(String.valueOf(Result));
+                    fuelConsumption = fuelInt / distanceInt * 100 ;
+                    fuelConsumption2 = distanceInt / fuelInt  ;
+                    fuelCost = priceInt / fuelConsumption;
+                    fuelCost2 = 1 / fuelCost;
+                    result.setText("Fuel consumption: " + String.format("%.2f",fuelConsumption) + " Miles per Gallon\nFuel cost: " + String.format("%.2f",fuelCost) +" $. per mile ("+String.format("%.2f",fuelCost2)+" mile per $)");
                 }
                 if (measurementId == 0 && currencyId == 1){
-                    Result = distanceInt + fuelInt + priceInt;
-                    result.setText(String.valueOf(Result));
+                    fuelConsumption = fuelInt / distanceInt * 100 ;
+                    fuelConsumption2 = distanceInt / fuelInt  ;
+                    fuelCost = priceInt / fuelConsumption;
+                    fuelCost2 = 1 / fuelCost;
+                    result.setText("Fuel consumption: " + String.format("%.2f",fuelConsumption) + " Liters per 100km ("+String.format("%.2f",fuelConsumption2) +" km per liter)\nFuel cost: " + String.format("%.2f",fuelCost) +" $. per km ("+String.format("%.2f",fuelCost2)+" km per $)");
                 }
 
             }
